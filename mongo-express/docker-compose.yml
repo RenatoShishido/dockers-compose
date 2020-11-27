@@ -4,12 +4,12 @@ services:
     image: mongo
     container_name: mongo-database
     ports:
-      - 27018:27017
+      - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: passwordRoot
     networks:
-      network-database:
+      network-database-tutoria-em-pares:
         ipv4_address: 173.20.0.4
 
   mongo-express:
@@ -28,11 +28,11 @@ services:
     depends_on: 
       - mongo
     networks:
-      network-database:
+      network-database-tutoria-em-pares:
         ipv4_address: 173.20.0.5
 
 networks:
-  network-database:
+  network-database-tutoria-em-pares:
     driver: bridge
     ipam:
       driver: default
