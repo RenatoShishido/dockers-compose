@@ -2,13 +2,14 @@ version: "3.7"
 services:
   postgres:
     container_name: postgres
+    image: postgres:13
     ports:
       - 5432:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - "./var/lib/postgresql"
+      - /var/lib/postgresql
     networks:
       net_postgres:
         ipv4_address: 172.16.18.2
@@ -22,7 +23,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - 8081:80
+      - 8089:80
     networks:
       net_postgres:
         ipv4_address: 172.16.18.3
